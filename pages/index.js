@@ -49,10 +49,11 @@ export default function Home({ products }) {
 }
 
 export async function getStaticProps() {
-  const products = await getProductsInCollection();
+  const products = await getProductsInCollection()
   return {
     props: {
       products,
+      
     },
   };
 }

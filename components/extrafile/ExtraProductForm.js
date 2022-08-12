@@ -2,17 +2,17 @@ import React, { useState, useContext, useEffect } from "react";
 import { formatter } from "../../utils/helpers";
 
 import { CartContext } from "../../context/shopContext";
-import client, { getProduct } from "../../lib/shopify";
+import client, { addAnotherProduct, createNewProduct, getProduct } from "../../lib/shopify";
 import ExtraProductOptions from "./ExtraProductOptions";
 
 export default function ExtraProductForm({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, newPorductCon, setCreateNewProduct } = useContext(CartContext);
   const allVariantOptions = product.variants.map((variant) => {
     const allOptions = {};
     variant.selectedOptions.map((item) => {
       allOptions[item.name] = item.value;
     });
-
+      
     return {
       id: variant.id,
       title: product.title,
@@ -75,6 +75,18 @@ export default function ExtraProductForm({ product }) {
             id="add-to-cart-portal-btn"
           >
             Add to cart
+          </button>
+          <button
+            onClick={() => {
+              createNewProduct()
+              console.log("clicked" + createNewProduct());
+              // newPorductCon()
+             
+            }}
+            className="btn rounded btn-primary btn-block"
+            id="add-to-cart-portal-btn"
+          >
+            Product test
           </button>
         </div>
       </div>

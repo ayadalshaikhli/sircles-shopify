@@ -56,8 +56,8 @@ export default function ExtraProductCard({ product }) {
                 <h4>{formatter.format(price)}</h4>
               </div>
             </div>
-            <div class="row">
-              <div class="col-12">
+            <div className="row">
+              <div className="col-12">
                 <p>{product.node.description}</p>
               </div>
             </div>

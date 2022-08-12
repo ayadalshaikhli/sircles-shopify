@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-import { createCheckout, updateCheckout } from '../lib/shopify'
+import { createCheckout, updateCheckout, createNewProduct } from '../lib/shopify'
 
 const CartContext = createContext()
 
@@ -8,6 +8,7 @@ export default function ShopProvider({ children }) {
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutId, setCheckoutId] = useState('')
   const [checkoutUrl, setCheckoutUrl] = useState('')
+  const [createnewproduct, setCreateNewProduct] = useState('')
 
   useEffect(() => {
     if (localStorage.checkout_id) {
@@ -24,6 +25,14 @@ export default function ShopProvider({ children }) {
     }
 
   }, [])
+
+
+  async function newProductCon() {
+    const createNow = await createNewProduct()
+    setCreateNewProduct(createNow)
+
+    return createNow
+  }
 
 
   async function addToCart(newItem) {
@@ -82,7 +91,9 @@ export default function ShopProvider({ children }) {
       setCartOpen,
       addToCart,
       checkoutUrl,
-      removeCartItem
+      removeCartItem,
+      newProductCon,
+      setCreateNewProduct
     }}>
       {children}
     </CartContext.Provider>

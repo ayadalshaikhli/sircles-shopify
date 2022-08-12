@@ -152,3 +152,143 @@
 		</div>
 	</div>
 </div>
+
+
+
+// export async function customerNewCreate(input) {
+//   const query = `
+//     mutation createCustomer("${input}": CustomerCreateInput!) {
+//       customerCreate(input: "${input}") {
+//         customerUserErrors {
+//           code
+//           field
+//           message
+//         }
+
+//         customer {
+//           id
+//           email
+//         }
+
+//     }`
+
+//   const response = await ShopifyData(query)
+
+//   const checkout = response.data.checkoutCreate.checkout ? response.data.checkoutCreate.checkout : []
+
+//   return checkout
+// }
+
+// async function addAnotherProduct(miki) {
+  //   const URLL = `https://${domain}/admin/api/2022-07/products.json`;
+  //   const mark = {
+  
+  //     endpoint: URLL,
+  //     method: "POST",
+  //     headers: { 
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'X-Shopify-Access-Token': storeApiKey + ':' + storeApiPass
+  //   },
+  //     body: JSON.stringify({miki})
+  //     };
+  
+  //     try{
+  //       const dataa = await fetch(URLL, mark).then((response) => {
+  //       return response.json()
+  //     });
+  //     return dataa
+  //     } catch (error){
+  //       throw new Error("no miki")
+  //     }
+  // }
+  
+  // export async function newProduct(){
+  //   const query = `
+  //   mutation {
+  //     productCreate(input: {
+  //       title: "Shiny new product"
+  //       body_html: "<p>This is the product body</p>"
+  //       vendor: "My vendor"
+  //       product_type: "My type"
+  //       published: true
+  //     }) {
+  //       product {
+  //         title
+  //       }
+  //     }
+  //   }`;
+  //   const response = await addAnotherProduct(miki);
+  
+  //   const newproduct = response.data.productCreate.product
+  //     ? response.data.productCreate.product
+  //     : [];
+  
+  //   return newproduct;
+  // }
+
+// Admin API
+
+
+
+
+// const url = `https://${storeApiKey}:${storeApiPass}@${domain}/admin/api/2021-07/graphql.json`;
+
+// export async function mark(query, variables)  {
+//   const {
+//     data: { data, errors },
+//   } = await axios({
+//     url: url,
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//     },
+//     data: {
+//       query,
+//       variables,
+//     },
+//   });
+
+//   if (errors) {
+//     console.error(errors);
+//     throw new Error("Error accessing graphql");
+//   }
+
+//   return data;
+// };
+
+// async function updateInventoryLevel(id, delta) {
+//   const query = `
+//   mutation inventoryAdjustQuantity($input: InventoryAdjustQuantityInput!) {
+//         inventoryAdjustQuantity(input: $input) {
+//           inventoryLevel {
+//             available
+//           }
+//           userErrors {
+//             field
+//             message
+//           }
+//         }
+//       }`;
+
+//   const variables = {
+//     input: {
+//       availableDelta: delta,
+//       inventoryLevelId: id,
+//     },
+//   };
+
+//   try {
+//     const res = await sendQuery(query, variables);
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify(res),
+//     };
+//   } catch (error) {
+//     console.log(error);
+//     return {
+//       statusCode: 500,
+//       body: JSON.stringify(error),
+//     };
+//   }
+// }
